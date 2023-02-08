@@ -3,59 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class Actor extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('auth:sanctum', ['except' => ['index', 'show']]);
+    }
+   
     public function index()
     {
-        //
+        // $libros = Libro::where('precio', '<', 10)->where('precio', '>', 5)->get();
+        // $libros = Libro::orderBy('titulo','DESC')->get();
+        // $libros = Libro::paginate(5);
+        // $libros = Libro::orderByAsc('titulo')
+        //     ->orderByAsc('editorial')
+        //     ->paginate(5);
+        // $libro = Libro::find($id); //puede dar error
+        // $libro = Libro::findOrFail($id); //este no
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        
+        // $libroAModificar = Libro::findOrFail($id);
+        // $libroAModificar->titulo="Otro título";
+        // $libroAModificar->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

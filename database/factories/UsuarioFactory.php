@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,9 @@ class UsuarioFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
+        return [           
+            'login' => fake()->name(),
+            'password' => bcrypt('admin'),
         ];
     }
 }

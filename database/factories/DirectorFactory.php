@@ -18,7 +18,7 @@ class DirectorFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => $this->faker->name()
+            'nombre' => fake()->name()
         ];
     }
 }

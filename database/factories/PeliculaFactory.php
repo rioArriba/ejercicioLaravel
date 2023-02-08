@@ -17,7 +17,8 @@ class PeliculaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'titulo' => fake()->sentence(),
+            'year' => fake()->numberBetween(1990, 2000),
         ];
     }
 }

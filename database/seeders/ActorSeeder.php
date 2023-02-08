@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Actor;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ActorSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class ActorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Actor::factory(9)->create();
     }
 }

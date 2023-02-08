@@ -17,7 +17,7 @@ class ActorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => fake()->name()
         ];
     }
 }

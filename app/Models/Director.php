@@ -9,6 +9,6 @@ class Director extends Model
 {
     use HasFactory;
     function pelicula() {
-        $this->belongsTo(Pelicula::class);
+        $this->hasMany(Pelicula::class);
     }
 }

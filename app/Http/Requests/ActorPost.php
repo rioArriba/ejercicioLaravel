@@ -24,7 +24,17 @@ class ActorPost extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required|min:2'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nombre.required' => 'El nombre de actor es obligatorio',
+           
+            'nombre.min' => 'El nombre de actor es demasiado corto (al menos 5 caracteres)'
+           
         ];
     }
 }

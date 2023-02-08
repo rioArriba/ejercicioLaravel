@@ -11,6 +11,6 @@ class Actor extends Model
     use HasFactory;
 
     function pelicula() {
-        $this->belongsToMany(Pelicula::class);
+        $this->hasMany(Pelicula::class);
     }
 }

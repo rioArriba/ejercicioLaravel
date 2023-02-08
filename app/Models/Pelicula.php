@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Actor;
+use App\Models\Director;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pelicula extends Model
 {
     use HasFactory;
 
     function actor() {
-        $this->hasMany(Actor::class);
+        $this->belongsToMany(Actor::class);
     }
 
     function director() {
-        $this->hasOne(Director::class);
+        $this->belongsTo(Director::class);
     }
 }
