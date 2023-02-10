@@ -2,62 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Director;
 use Illuminate\Http\Request;
 
-class Director extends Controller
+class DirectorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        return  response()->json(Director::get(), 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $director = new Director();
+        $director->nombre = $request->nombre;
+        //$director->director()->associate(Director::findOrFail($request->director_id));
+        $director->save();
+        return response()->json($director, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+    public function show(Director $director)
     {
-        //
+        return response()->json($director, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    
+    public function update(Request $request, Director $director)
     {
-        //
+        $director->titulo = $request->titulo;
+        $director->anyo = $request->anyo;
+        $director->save();
+        return response()->json($director, 201);
+        // $libroAModificar = Libro::findOrFail($id);
+        // $libroAModificar->titulo="Otro título";
+        // $libroAModificar->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    
+    public function destroy(Director $director)
     {
-        //
+        $director->delete();
+        return response()->json($director, 204);
     }
 }

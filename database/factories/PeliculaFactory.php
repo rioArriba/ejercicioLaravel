@@ -18,7 +18,7 @@ class PeliculaFactory extends Factory
     {
         return [
             'titulo' => fake()->sentence(),
-            'year' => fake()->numberBetween(1990, 2000),
+            'anyo' => fake()->numberBetween(1990, 2000),
         ];
     }
 }

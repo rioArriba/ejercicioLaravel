@@ -24,7 +24,7 @@ class ActorPost extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|min:2'
+            'nombre' => 'required|min:5'
         ];
     }
 

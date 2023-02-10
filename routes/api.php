@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Actor;
-use App\Models\Usuario;
-use App\Models\Director;
-use App\Models\Pelicula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActorController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\PeliculaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/',function () { return response()->json('Bienvenido', 200);});
 
 
-Route::apiResource('peliculas', Pelicula::class);
-Route::apiResource('actors', Actor::class);
-Route::apiResource('directors', Director::class);
-Route::post('login',[ Usuario::class, 'login']);
+Route::apiResource('peliculas', PeliculaController::class);
+Route::apiResource('actors', ActorController::class);
+Route::apiResource('directors', DirectorController::class);
+Route::post('login',[ UsuarioController::class, 'login']);
 
 
