@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Actor;
 use Illuminate\Http\Request;
+use MiNamespace\DTO\ActorDTO;
 use App\Http\Requests\ActorPost;
 use MiNamespace\Service\ActorService;
 use MiNamespace\factories\ActorFactory;
@@ -41,24 +42,32 @@ class ActorController extends Controller
             return response()->json($actor, 201);
     }
    
-    public function show(Actor $actor)
+    public function show(int $id)
     {
-        return response()->json($actor, 200);
+         return  response()->json(ActorFactory::getService()::find($id), 200);
+       // return response()->json($actor, 200);
     }
 
    
-    public function update(Request $request, Actor $actor)
+    public function update(ActorPost $request, int $id)
     {
-        $actor->titulo = $request->titulo;
-        $actor->year = $request->year;
-        $actor->save();
-        return response()->json($actor, 201);
+        $result = new ActorDTO(
+            $id,
+            $request->nombre     
+        );
+        return ActorFactory::getService()::update($result);
+
+        // $actor->titulo = $request->titulo;
+        // $actor->year = $request->year;
+        // $actor->save();
+        
+        // return response()->json($actor, 201);
         // $libroAModificar = Libro::findOrFail($id);
         // $libroAModificar->titulo="Otro título";
         // $libroAModificar->save();
     }
 
-    public function destroy(Actor $actor)
+    public function destroy(int $id)
     {
         $actor->delete();
         return response()->json($actor, 204);

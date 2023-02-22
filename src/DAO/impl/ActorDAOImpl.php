@@ -25,11 +25,17 @@ class ActorDAOImpl implements ActorDAO{
     }
 
     public static function findById(int $id): ActorDTO {
-        $db_data = DB::table('actors')->find($id);
+        // $db_data = DB::table('actors')->find($id);
+        $db_data = Actor::findOrFail($id);
         $result = new ActorDTO(
                 $db_data->id, 
                 $db_data->nombre     
             );         
             return $result;   
+    }
+
+    
+    public static function update(ActorDTO $actor): bool{
+        return DB::table('actors')->update($actor->id(), ["nombre" => $actor->nombre()]);
     }
 }
